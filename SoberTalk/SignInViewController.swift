@@ -21,6 +21,11 @@ class SignInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-
+    @IBAction func loginAnonymouslyDidTapped(_ sender: Any) {
+    }
+    
+    @IBAction func SignInDidTapped(_ sender: Any) {
+    }
+    
+//end here
 }
