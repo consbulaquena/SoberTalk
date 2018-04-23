@@ -4,7 +4,7 @@
 iOS native Chat app, photo and realtime chat conversations for drug/alcohol recovery.
 
 ### About
-<b>TherapyChat</b> is an app that connects therapist to individuals who need help.
+<b>SoberTalk</b> is an app that connects therapist to individuals who need help.
 Get support one-on-one chat conversation with an addiction specialist who can talk with you about specific issues from drug to alcohol addiction and progress, anonymous chat is available for individuals who are shy in asking for help. 
  
 ![alt tag]()
