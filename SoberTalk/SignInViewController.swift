@@ -41,8 +41,7 @@ class SignInViewController: UIViewController {
         
         
         // set nav controller as root
-        
-
+        appDelegate.window?.rootViewController = naviVC
         
     }
     
