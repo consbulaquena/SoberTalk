@@ -8,12 +8,13 @@
 
 import Foundation
 import FirebaseAuth
+import UIKit
 
 //exist just once
 class Helper {
     static let helper = Helper()
     
-    func loginAnonymously(_ sender: Any) {
+    func loginAnonymously() {
         //anon login and switch views
         //switch view by setting nav controller as root controller
 
@@ -35,5 +36,8 @@ class Helper {
         
         
     }
+    
+    func logInWithGoogle(){
+    
 }
 
