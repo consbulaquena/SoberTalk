@@ -10,7 +10,11 @@ import UIKit
 import GoogleSignIn
 
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+         print(user.authentication)
+    }
+    
     @IBOutlet weak var anonymousLogin: UIButton!
     
     
@@ -20,6 +24,8 @@ class SignInViewController: UIViewController {
         
         //for Google to recognize app
         GIDSignIn.sharedInstance().clientID = "41656059468-5eesbuco3h7gr6vm4r8n65mss0uvaef4.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
         
         // Do any additional setup after loading the view.
     }
@@ -42,17 +48,17 @@ class SignInViewController: UIViewController {
         print("google login did tapped")
         //login google & switch view
         GIDSignIn.sharedInstance().signIn()
-        Helper.helper.logInWithGoogle()
+        
+        func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+            Helper.helper.logInWithGoogle(authentication: user.authentication)
         
         
         
         //create main storyboard instance, Switching views
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let naviVC = storyboard.instantiateViewController(withIdentifier: "NavigationVC")
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = naviVC
-        
+
+
     }
     
-//end here
+    }
+    
 }
