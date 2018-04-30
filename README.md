@@ -14,7 +14,7 @@ Get support one-on-one chat conversation with an addiction specialist who can ta
 <li>Sending text messages</li>
 <li>Sending pictures</li>
 <li>Login Anonymously</li>
-<li>Login with Email</li>
+<li>Google Authentication</li>
 <li>Firebase backend (full realtime actions)</li>
 <li>Deployment target: iOS 11.2+</li>
 <li>Supported devices: iPhone 5s, SE, 6, 6 Plus, 6s, 6s Plus, 7, 7 Plus, 8, 8 Plus, iPhone X </li>
