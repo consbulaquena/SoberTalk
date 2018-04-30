@@ -11,9 +11,7 @@ import GoogleSignIn
 
 
 class SignInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-         print(user.authentication)
-    }
+
     
     @IBOutlet weak var anonymousLogin: UIButton!
     
@@ -44,13 +42,15 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
     }
     
     
+    //Google Button
     @IBAction func SignInDidTapped(_ sender: Any) {
         print("google login did tapped")
         //login google & switch view
         GIDSignIn.sharedInstance().signIn()
-        
-        func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-            Helper.helper.logInWithGoogle(authentication: user.authentication)
+    }
+
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        Helper.helper.logInWithGoogle(authentication: user.authentication)
         
         
         
@@ -61,4 +61,4 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
     
     }
     
-}
+

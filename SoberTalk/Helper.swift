@@ -10,6 +10,7 @@ import Foundation
 import FirebaseAuth
 import UIKit
 import GoogleSignIn
+import FirebaseDatabase
 
 
 //exist just once
@@ -25,10 +26,7 @@ class Helper {
                 print("UserId: \(anonymousUser!.uid)")
                 
                 //create main storyboard instance, Switching views
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let naviVC = storyboard.instantiateViewController(withIdentifier: "NavigationVC")
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.window?.rootViewController = naviVC
+                self.switchToNavigationViewController()
                 
             } else {
                 print(error!)
@@ -40,17 +38,17 @@ class Helper {
     }
     
     
-    func logInWithGoogle(authentication: GIDAuthentication){
+    func logInWithGoogle(authentication: GIDAuthentication) {
     let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
-    }
-    
+
+
     FIRAuth.auth()?.signIn(with: credential, completion: { (user: FIRUser?, error: Error?) in
     if error != nil {
     print(error!.localizedDescription)
     return
-    }else {
-    print(user?.email)
+    } else {
+        print(user?.email)
     print(user?.displayName)
     print(user?.photoURL)
     
@@ -62,7 +60,7 @@ class Helper {
     self.switchToNavigationViewController()
     }
     })
-
+    }
 
 func switchToNavigationViewController() {
     
