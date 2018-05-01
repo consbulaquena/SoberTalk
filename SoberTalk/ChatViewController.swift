@@ -35,12 +35,17 @@ class ChatViewController: JSQMessagesViewController {
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
         print("didPressAccessoryButton")
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        self.present(imagePicker, animated: true, completion: nil)
     }
     
+
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return messages[indexPath.item]
     }
-   
+    
+    
     //Returns bubble msg
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = messages[indexPath.item]
@@ -98,5 +103,26 @@ class ChatViewController: JSQMessagesViewController {
         // set loginVC controller as root
         appDelegate.window?.rootViewController = loginVC
     }
-    
+
 }
+
+extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        print("did finish picking")
+        // get the image
+        print(info)
+        if let picture = info[UIImagePickerControllerOriginalImage] as? UIImage {
+
+        }
+        else if let video = info[UIImagePickerControllerMediaURL] as? URL {
+
+            
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+        collectionView.reloadData()
+        
+        
+}
+}
+
