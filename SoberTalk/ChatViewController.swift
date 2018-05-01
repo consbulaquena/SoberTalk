@@ -11,6 +11,7 @@ import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
+    var avatarDict = [String: JSQMessagesAvatarImage]()
     
     
     override func viewDidLoad() {
@@ -25,11 +26,56 @@ class ChatViewController: JSQMessagesViewController {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         print("didPressSend")
         print("\(text)")
+        print(senderId)
+        print(senderDisplayName)
+        messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
+        collectionView.reloadData()
+        print(messages)
     }
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
         print("didPressAccessoryButton")
     }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+        return messages[indexPath.item]
+    }
+   
+    //Returns bubble msg
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+        let message = messages[indexPath.item]
+        let bubbleFactory = JSQMessagesBubbleImageFactory()
+        if message.senderId == self.senderId {
+            
+            return bubbleFactory!.outgoingMessagesBubbleImage(with: UIColor(red: 40/255, green: 147/255, blue: 250/255, alpha: 1))
+        } else {
+            
+            return bubbleFactory!.incomingMessagesBubbleImage(with: .gray)
+            
+        }
+        
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+        let message = messages[indexPath.item]
+        
+        return avatarDict[message.senderId]
+        //return JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "profileImage"), diameter: 30)
+    }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("number of items: \(messages.count)")
+        return messages.count
+    }
+   
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        
+        return cell
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
