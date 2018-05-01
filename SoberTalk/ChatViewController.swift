@@ -10,11 +10,25 @@ import UIKit
 import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController {
-
+    var messages = [JSQMessage]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.senderId = "1"
+        self.senderDisplayName = "consbulaquena"
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        print("didPressSend")
+        print("\(text)")
+    }
+    
+    override func didPressAccessoryButton(_ sender: UIButton!) {
+        print("didPressAccessoryButton")
     }
 
     override func didReceiveMemoryWarning() {
