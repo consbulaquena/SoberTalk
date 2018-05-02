@@ -111,18 +111,14 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
         print("did finish picking")
         // get the image
         print(info)
-        if let picture = info[UIImagePickerControllerOriginalImage] as? UIImage {
-
-        }
-        else if let video = info[UIImagePickerControllerMediaURL] as? URL {
-
-            
-        }
+        let picture = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let photo = JSQPhotoMediaItem(image: picture!)
+        messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: photo))
         
         self.dismiss(animated: true, completion: nil)
         collectionView.reloadData()
-        
+    }
         
 }
-}
+
 
