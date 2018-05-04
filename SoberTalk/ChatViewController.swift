@@ -8,6 +8,7 @@
 
 import UIKit
 import JSQMessagesViewController
+import FirebaseDatabase
 
 class ChatViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
@@ -21,6 +22,8 @@ class ChatViewController: JSQMessagesViewController {
         self.senderDisplayName = "consbulaquena"
 
         // Do any additional setup after loading the view.
+        let rootRef = FIRDatabase.database().reference()
+        print(rootRef)
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
