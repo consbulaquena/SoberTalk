@@ -23,7 +23,9 @@ class ChatViewController: JSQMessagesViewController {
 
         // Do any additional setup after loading the view.
         let rootRef = FIRDatabase.database().reference()
+        let messageRef = rootRef.child("messages")
         print(rootRef)
+        print(messageRef)
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
