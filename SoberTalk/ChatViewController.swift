@@ -21,11 +21,19 @@ class ChatViewController: JSQMessagesViewController {
         self.senderId = "1"
         self.senderDisplayName = "consbulaquena"
 
-        // Do any additional setup after loading the view.
+        // FIRdatabase
         let rootRef = FIRDatabase.database().reference()
         let messageRef = rootRef.child("messages")
         print(rootRef)
         print(messageRef)
+//        messageRef.childByAutoId().setValue("first message")
+//        messageRef.childByAutoId().setValue("second message")
+        messageRef.observeSingleEvent(of: FIRDataEventType.value) { (snapshot: FIRDataSnapshot) in
+            print(snapshot.value)
+            if let dict = snapshot.value as? NSDictionary {
+            print(dict)
+            }
+        }
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
