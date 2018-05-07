@@ -1,7 +1,10 @@
-# SoberTalk
+![alt tag](https://github.com/consbulaquena/SoberTalk/blob/master/SoberTalk/Assets.xcassets/sobertalk9names.png)
+
 [![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)]() [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)]()
 
 iOS native Chat app, photo and realtime chat conversations for drug/alcohol recovery.
+
+<img src="https://github.com/consbulaquena/SoberTalk/blob/master/SoberTalk/Assets.xcassets/screen1chatSobertalk.png" width="290">
 
 ### About
 <b>SoberTalk</b> is an app that connects therapist to individuals who need help.
